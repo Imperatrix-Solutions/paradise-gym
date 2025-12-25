@@ -1,0 +1,725 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Paradise Gym - Best Affordable Gym in Sitapura, Jaipur</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #e63946;
+            --primary-dark: #d62828;
+            --secondary: #1d3557;
+            --text-dark: #1a1a1a;
+            --text-light: #666;
+            --bg-light: #f8f9fa;
+            --white: #ffffff;
+            --border: #e0e0e0;
+            --success: #25d366;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            color: var(--text-dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        body.hindi {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 16px;
+        }
+
+        section {
+            padding: 48px 0;
+        }
+
+        h1, h2, h3 {
+            font-weight: 700;
+            line-height: 1.2;
+        }
+
+        h1 {
+            font-size: 36px;
+            margin-bottom: 12px;
+        }
+
+        h2 {
+            font-size: 28px;
+            margin-bottom: 32px;
+            text-align: center;
+        }
+
+        h3 {
+            font-size: 18px;
+            margin-bottom: 8px;
+        }
+
+        .lang-toggle {
+            position: fixed;
+            top: 16px;
+            right: 16px;
+            z-index: 1001;
+            background: var(--white);
+            border: 2px solid var(--primary);
+            border-radius: 24px;
+            padding: 8px 16px;
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--primary);
+            cursor: pointer;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            transition: all 0.3s;
+        }
+
+        .lang-toggle:hover {
+            background: var(--primary);
+            color: var(--white);
+            transform: translateY(-2px);
+        }
+
+        .hero {
+            background: linear-gradient(135deg, var(--secondary) 0%, #2d4a6f 100%);
+            color: var(--white);
+            text-align: center;
+            padding: 80px 0 60px;
+            position: relative;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 60px;
+            background: var(--white);
+            clip-path: polygon(0 100%, 100% 100%, 100% 0, 0 100%);
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-title {
+            color: var(--white);
+            font-weight: 800;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+        }
+
+        .hero-subtitle {
+            font-size: 18px;
+            color: #e0e6ed;
+            margin-bottom: 32px;
+            font-weight: 500;
+        }
+
+        .rating {
+            display: inline-block;
+            background: rgba(255,255,255,0.2);
+            padding: 8px 16px;
+            border-radius: 20px;
+            margin-bottom: 24px;
+            font-size: 15px;
+            backdrop-filter: blur(10px);
+        }
+
+        .cta-group {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin-top: 32px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 16px 32px;
+            border-radius: 12px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 16px;
+            text-align: center;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn-primary {
+            background: var(--primary);
+            color: var(--white);
+            box-shadow: 0 4px 12px rgba(230, 57, 70, 0.3);
+        }
+
+        .btn-primary:hover {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(230, 57, 70, 0.4);
+        }
+
+        .btn-secondary {
+            background: var(--white);
+            color: var(--secondary);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+
+        .btn-secondary:hover {
+            background: var(--bg-light);
+            transform: translateY(-2px);
+        }
+
+        .services {
+            background: var(--white);
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 16px;
+            margin-top: 32px;
+        }
+
+        .service-card {
+            background: var(--bg-light);
+            padding: 24px 16px;
+            border-radius: 16px;
+            text-align: center;
+            transition: all 0.3s;
+            border: 2px solid transparent;
+        }
+
+        .service-card:hover {
+            transform: translateY(-4px);
+            border-color: var(--primary);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+        }
+
+        .service-icon {
+            font-size: 40px;
+            margin-bottom: 12px;
+            display: block;
+        }
+
+        .service-title {
+            font-size: 16px;
+            font-weight: 700;
+            margin-bottom: 8px;
+            color: var(--secondary);
+        }
+
+        .service-desc {
+            color: var(--text-light);
+            font-size: 13px;
+            line-height: 1.5;
+        }
+
+        .why-choose {
+            background: var(--bg-light);
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 16px;
+            margin-top: 32px;
+        }
+
+        .feature-item {
+            background: var(--white);
+            padding: 20px;
+            border-radius: 16px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+            transition: all 0.3s;
+        }
+
+        .feature-item:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 6px 16px rgba(0,0,0,0.1);
+        }
+
+        .feature-icon {
+            font-size: 32px;
+            margin-bottom: 12px;
+            display: block;
+        }
+
+        .feature-content h3 {
+            font-size: 16px;
+            margin-bottom: 6px;
+            color: var(--secondary);
+        }
+
+        .feature-content p {
+            color: var(--text-light);
+            font-size: 13px;
+            line-height: 1.5;
+        }
+
+        .reviews {
+            background: var(--white);
+        }
+
+        .reviews-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 16px;
+            margin-top: 32px;
+        }
+
+        .review-card {
+            background: var(--bg-light);
+            padding: 24px;
+            border-radius: 16px;
+            border-left: 4px solid var(--primary);
+            transition: all 0.3s;
+        }
+
+        .review-card:hover {
+            transform: translateX(4px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+        }
+
+        .review-rating {
+            color: #ffa500;
+            font-size: 18px;
+            margin-bottom: 12px;
+        }
+
+        .review-text {
+            font-size: 14px;
+            color: var(--text-dark);
+            margin-bottom: 16px;
+            font-style: italic;
+            line-height: 1.6;
+        }
+
+        .review-author {
+            font-weight: 600;
+            font-size: 13px;
+            color: var(--text-light);
+        }
+
+        .location {
+            background: var(--bg-light);
+        }
+
+        .location-content {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 24px;
+            margin-top: 32px;
+        }
+
+        .location-item {
+            background: var(--white);
+            padding: 24px;
+            border-radius: 16px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+        }
+
+        .location-item h3 {
+            font-size: 18px;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: var(--secondary);
+        }
+
+        .location-item p {
+            color: var(--text-light);
+            font-size: 14px;
+            line-height: 1.8;
+        }
+
+        .gallery {
+            background: var(--white);
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+            margin-top: 32px;
+        }
+
+        .gallery-item {
+            border-radius: 16px;
+            overflow: hidden;
+            position: relative;
+            padding-bottom: 100%;
+            background: var(--bg-light);
+        }
+
+        .gallery-item img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.05);
+        }
+
+        .contact {
+            background: var(--white);
+            text-align: center;
+        }
+
+        .contact-subtitle {
+            color: var(--text-light);
+            margin-bottom: 32px;
+            font-size: 15px;
+        }
+
+        .contact-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin-top: 32px;
+        }
+
+        .floating-whatsapp {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 1000;
+            background: var(--success);
+            color: var(--white);
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 32px;
+            box-shadow: 0 4px 16px rgba(37, 211, 102, 0.4);
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+
+        .floating-whatsapp:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 20px rgba(37, 211, 102, 0.5);
+        }
+
+        .footer {
+            background: var(--secondary);
+            color: var(--white);
+            text-align: center;
+            padding: 32px 20px;
+            font-size: 14px;
+        }
+
+        .footer p {
+            margin-bottom: 8px;
+        }
+
+        @media (min-width: 768px) {
+            h1 {
+                font-size: 52px;
+            }
+
+            h2 {
+                font-size: 38px;
+            }
+
+            .hero {
+                padding: 120px 0 80px;
+            }
+
+            .hero-subtitle {
+                font-size: 22px;
+            }
+
+            .cta-group {
+                flex-direction: row;
+                justify-content: center;
+            }
+
+            .services-grid {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 24px;
+            }
+
+            .service-card {
+                padding: 32px 20px;
+            }
+
+            .service-icon {
+                font-size: 48px;
+            }
+
+            .service-title {
+                font-size: 18px;
+            }
+
+            .service-desc {
+                font-size: 14px;
+            }
+
+            .features-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 24px;
+            }
+
+            .feature-item {
+                padding: 28px;
+            }
+
+            .feature-content h3 {
+                font-size: 18px;
+            }
+
+            .feature-content p {
+                font-size: 14px;
+            }
+
+            .reviews-grid {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 24px;
+            }
+
+            .location-content {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .gallery-grid {
+                grid-template-columns: repeat(4, 1fr);
+                gap: 16px;
+            }
+
+            .contact-buttons {
+                flex-direction: row;
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <button class="lang-toggle" onclick="toggleLanguage()">
+        <span class="lang-text">हिंदी</span>
+    </button>
+
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="rating" data-en="⭐ 4.5/5 (52 Reviews)" data-hi="⭐ 4.5/5 (52 समीक्षाएं)">⭐ 4.5/5 (52 Reviews)</div>
+                <h1 class="hero-title" data-en="Paradise Gym" data-hi="पैराडाइज जिम">Paradise Gym</h1>
+                <p class="hero-subtitle" data-en="Best affordable gym in Sitapura, Jaipur" data-hi="सीतापुरा, जयपुर का सबसे किफायती और बेस्ट जिम">Best affordable gym in Sitapura, Jaipur</p>
+                <div class="cta-group">
+                    <a href="https://wa.me/917014878955?text=Hello, I want to know about Paradise Gym membership" class="btn btn-primary" data-en="Contact on WhatsApp" data-hi="WhatsApp पर संपर्क करें">Contact on WhatsApp</a>
+                    <a href="tel:+917014878955" class="btn btn-secondary" data-en="Call Now" data-hi="अभी कॉल करें">Call Now</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="services">
+        <div class="container">
+            <h2 data-en="Our Services" data-hi="हमारी सुविधाएं">Our Services</h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <span class="service-icon">💪</span>
+                    <h3 class="service-title" data-en="Weight Training" data-hi="Weight Training">Weight Training</h3>
+                    <p class="service-desc" data-en="Complete equipment for weight training and muscle building" data-hi="वेट ट्रेनिंग और मसल बिल्डिंग के लिए पूरा equipment">Complete equipment for weight training and muscle building</p>
+                </div>
+                <div class="service-card">
+                    <span class="service-icon">🏃</span>
+                    <h3 class="service-title" data-en="Cardio Workout" data-hi="Cardio Workout">Cardio Workout</h3>
+                    <p class="service-desc" data-en="Treadmills and cardio machines for fitness and weight loss" data-hi="फिटनेस और वजन घटाने के लिए Treadmill और cardio मशीनें">Treadmills and cardio machines for fitness and weight loss</p>
+                </div>
+                <div class="service-card">
+                    <span class="service-icon">👨‍🏫</span>
+                    <h3 class="service-title" data-en="Personal Training" data-hi="Personal Training">Personal Training</h3>
+                    <p class="service-desc" data-en="Expert guidance from experienced trainers" data-hi="अनुभवी trainers से विशेषज्ञ मार्गदर्शन">Expert guidance from experienced trainers</p>
+                </div>
+                <div class="service-card">
+                    <span class="service-icon">📋</span>
+                    <h3 class="service-title" data-en="Diet Planning" data-hi="Diet Planning">Diet Planning</h3>
+                    <p class="service-desc" data-en="Custom diet plans for your fitness goals" data-hi="आपके fitness goals के लिए कस्टम diet plans">Custom diet plans for your fitness goals</p>
+                </div>
+                <div class="service-card">
+                    <span class="service-icon">🎯</span>
+                    <h3 class="service-title" data-en="Body Transformation" data-hi="Body Transformation">Body Transformation</h3>
+                    <p class="service-desc" data-en="Complete transformation programs for weight gain or loss" data-hi="वजन बढ़ाने या घटाने के लिए पूर्ण transformation programs">Complete transformation programs for weight gain or loss</p>
+                </div>
+                <div class="service-card">
+                    <span class="service-icon">⚡</span>
+                    <h3 class="service-title" data-en="Strength Building" data-hi="Strength Building">Strength Building</h3>
+                    <p class="service-desc" data-en="Structured plans to increase strength and endurance" data-hi="Strength और endurance बढ़ाने के लिए structured plans">Structured plans to increase strength and endurance</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="why-choose">
+        <div class="container">
+            <h2 data-en="Why Choose Paradise Gym?" data-hi="Paradise Gym क्यों चुनें?">Why Choose Paradise Gym?</h2>
+            <div class="features-grid">
+                <div class="feature-item">
+                    <span class="feature-icon">💰</span>
+                    <div class="feature-content">
+                        <h3 data-en="Affordable Membership" data-hi="Affordable Membership">Affordable Membership</h3>
+                        <p data-en="Most affordable gym in Sitapura with full facilities" data-hi="पूरी facilities के साथ Sitapura में सबसे किफायती gym">Most affordable gym in Sitapura with full facilities</p>
+                    </div>
+                </div>
+                <div class="feature-item">
+                    <span class="feature-icon">🤝</span>
+                    <div class="feature-content">
+                        <h3 data-en="Friendly & Supportive" data-hi="Friendly & Supportive">Friendly & Supportive</h3>
+                        <p data-en="Friendly owner and trainers who support you every step" data-hi="मिलनसार owner और trainers जो हर कदम पर support करते हैं">Friendly owner and trainers who support you every step</p>
+                    </div>
+                </div>
+                <div class="feature-item">
+                    <span class="feature-icon">🔥</span>
+                    <div class="feature-content">
+                        <h3 data-en="Motivating Environment" data-hi="Motivating Environment">Motivating Environment</h3>
+                        <p data-en="Get motivated daily to reach your fitness goals" data-hi="अपने fitness goals तक पहुंचने के लिए रोज motivation मिलती है">Get motivated daily to reach your fitness goals</p>
+                    </div>
+                </div>
+                <div class="feature-item">
+                    <span class="feature-icon">✅</span>
+                    <div class="feature-content">
+                        <h3 data-en="Real Results" data-hi="Real Results">Real Results</h3>
+                        <p data-en="Members see visible progress in strength and body transformation" data-hi="Members को strength और body transformation में visible progress दिखती है">Members see visible progress in strength and body transformation</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="reviews">
+        <div class="container">
+            <h2 data-en="What Our Members Say" data-hi="हमारे Members क्या कहते हैं">What Our Members Say</h2>
+            <div class="reviews-grid">
+                <div class="review-card">
+                    <div class="review-rating">⭐⭐⭐⭐⭐</div>
+                    <p class="review-text">Supportive environment, friendly staff, motivating and accountable.</p>
+                    <p class="review-author">- Dilip Kumar</p>
+                </div>
+                <div class="review-card">
+                    <div class="review-rating">⭐⭐⭐⭐⭐</div>
+                    <p class="review-text">Best gym in this area and the owner and trainer are very friendly.</p>
+                    <p class="review-author">- Niren Sharma</p>
+                </div>
+                <div class="review-card">
+                    <div class="review-rating">⭐⭐⭐⭐⭐</div>
+                    <p class="review-text">Awesome place to transform yourself.</p>
+                    <p class="review-author">- Pawan Verma</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="gallery">
+        <div class="container">
+            <h2 data-en="Inside Paradise Gym" data-hi="Paradise Gym के अंदर">Inside Paradise Gym</h2>
+            <div class="gallery-grid">
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=400&h=400&fit=crop" alt="Gym Equipment" loading="lazy">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1571902943202-507ec2618e8f?w=400&h=400&fit=crop" alt="Weight Training Area" loading="lazy">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1517836357463-d25dfeac3438?w=400&h=400&fit=crop" alt="Cardio Section" loading="lazy">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1583454110551-21f2fa2afe61?w=400&h=400&fit=crop" alt="Fitness Training" loading="lazy">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="location">
+        <div class="container">
+            <h2 data-en="Our Location & Timings" data-hi="हमारी Location और Timing">Our Location & Timings</h2>
+            <div class="location-content">
+                <div class="location-item">
+                    <h3>📍 <span data-en="Address" data-hi="पता">Address</span></h3>
+                    <p>QR7R+WQ9, Mod, Goner Road<br>Sitapura, Jaipur<br>Rajasthan - 302022</p>
+                </div>
+                <div class="location-item">
+                    <h3>🕐 <span data-en="Opening Hours" data-hi="खुलने का समय">Opening Hours</span></h3>
+                    <p data-en="Opens from 4:00 PM<br><br>New Opening: 26 January 2025<br><br>Peak timings: 6 AM, 9 AM, 6 PM, 9 PM" data-hi="शाम 4:00 बजे से खुलता है<br><br>New Opening: 26 जनवरी 2025<br><br>Peak timing: सुबह 6, 9 और शाम 6, 9 बजे">Opens from 4:00 PM<br><br>New Opening: 26 January 2025<br><br>Peak timings: 6 AM, 9 AM, 6 PM, 9 PM</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="contact">
+        <div class="container">
+            <h2 data-en="Contact Us Now" data-hi="अभी संपर्क करें">Contact Us Now</h2>
+            <p class="contact-subtitle" data-en="Start your fitness journey today" data-hi="आज ही अपनी fitness journey शुरू करें">Start your fitness journey today</p>
+            <div class="contact-buttons">
+                <a href="https://wa.me/917014878955?text=Hello, I want to know about Paradise Gym membership" class="btn btn-primary" data-en="Message on WhatsApp" data-hi="WhatsApp पर Message करें">Message on WhatsApp</a>
+                <a href="tel:+917014878955" class="btn btn-secondary">📞 070148 78955</a>
+            </div>
+        </div>
+    </section>
+
+    <a href="https://wa.me/917014878955?text=Hello, I want to know about Paradise Gym membership" class="floating-whatsapp" aria-label="WhatsApp">💬</a>
+
+    <footer class="footer">
+        <p>Paradise Gym - Sitapura, Jaipur</p>
+        <p>⭐ 4.5/5 (52 Reviews)</p>
+        <p style="margin-top: 16px; font-size: 13px; opacity: 0.8;">© 2025 Paradise Gym. All rights reserved.</p>
+    </footer>
+
+    <script>
+        let isHindi = false;
+
+        function toggleLanguage() {
+            isHindi = !isHindi;
+            const body = document.body;
+            const langText = document.querySelector('.lang-text');
+            
+            if (isHindi) {
+                body.classList.add('hindi');
+                langText.textContent = 'English';
+                translatePage('hi');
+            } else {
+                body.classList.remove('hindi');
+                langText.textContent = 'हिंदी';
+                translatePage('en');
+            }
+        }
+
+        function translatePage(lang) {
+            const elements = document.querySelectorAll('[data-en]');
+            elements.forEach(el => {
+                const text = lang === 'en' ? el.getAttribute('data-en') : el.getAttribute('data-hi');
+                if (text) {
+                    if (el.tagName === 'A' && el.href.includes('wa.me')) {
+                        const message = lang === 'en' 
+                            ? 'Hello, I want to know about Paradise Gym membership'
+                            : 'नमस्ते, मुझे Paradise Gym की membership के बारे में जानकारी चाहिए';
+                        el.href = `https://wa.me/917014878955?text=${encodeURIComponent(message)}`;
+                    }
+                    el.innerHTML = text;
+                }
+            });
+        }
+    </script>
+
+</body>
+</html>
